@@ -1,24 +1,59 @@
 ---
-import Icon from "./Icon.astro";
+import stackoverflow from "../img/stackoverflow.svg"
+import github from "../img/github.svg"
+import linkedin from "../img/linkedin.svg"
+import codepen from "../img/codepen.svg"
 ---
 <div>
-  <a href="https://www.linkedin.com/in/kayla-pratt-468b60b5/" target="_blank"><Icon name="linkedin-in" /> LinkedIn</a>
-  <a href="https://stackoverflow.com/users/22083855/kayla-pratt" target="_blank"><Icon name="stack-overflow" /> Stack Overflow</a>
-  <a href="https://github.com/KaylaPrattA11y" target="_blank"><Icon name="github-alt" /> GitHub</a>
-  <a href="https://codepen.io/kaylapratt" target="_blank"><Icon name="codepen" /> Codepen</a>
+  <a href="https://www.linkedin.com/in/kayla-pratt-468b60b5/" target="_blank">
+    <kay-icon aria-hidden="true">
+      <img src={linkedin} alt="" />
+    </kay-icon>
+    LinkedIn
+  </a>
+  <a href="https://stackoverflow.com/users/22083855/kayla-pratt" target="_blank">
+    <kay-icon aria-hidden="true">
+      <img src={stackoverflow} alt="" />
+    </kay-icon>
+    Stack Overflow
+  </a>
+  <a href="https://github.com/KaylaPrattA11y" target="_blank">
+    <kay-icon aria-hidden="true">
+      <img src={github} alt="" />
+    </kay-icon>
+    GitHub
+  </a>
+  <a href="https://codepen.io/kaylapratt" target="_blank">
+    <kay-icon aria-hidden="true">
+      <img src={codepen} alt="" />
+    </kay-icon>
+    Codepen
+  </a>
 </div>
 
 <style>
-  div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.15rem var(--gap);
-  }
-  a {
-    display: flex;
-    align-items: center;
-    gap: calc(var(--gap) * 0.5);
-    font-size: 0.85rem;
-    color: var(--clr-accent);
-  }
+div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem var(--gap);
+}
+a {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap) * 0.5);
+  font-size: 0.85rem;
+  color: var(--clr-accent);
+}
+kay-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  filter: invert(1);
+  -webkit-filter: invert(1);
+  -moz-filter: invert(1);
+}
 </style>
