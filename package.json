@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "astro": "^2.6.5"
+    "astro": "^2.6.6"
   }
 }
