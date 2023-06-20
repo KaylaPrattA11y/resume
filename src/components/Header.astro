@@ -1,0 +1,30 @@
+---
+import Social from "./Social.astro";
+---
+
+<header aria-label="Main">
+  <img src="../../assets/logo.png" alt="Kayla Pratt" />
+  <Social/>
+</header>
+<style>
+  header {
+    background-color: var(--clr-dark);
+    color: var(--clr-lighter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+    position: sticky;
+    top: 0;
+    padding: 0.5rem 1rem;
+  }
+  img {
+    filter: hue-rotate(330deg);
+    -webkit-filter: hue-rotate(330deg); 
+    -moz-filter: hue-rotate(330deg);
+    align-self: flex-start;
+  }
+  @media (min-width: 768px) {
+    
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import Icon from "./Icon.astro";
+---
+<div>
+  <a href="https://www.linkedin.com/in/kayla-pratt-468b60b5/" target="_blank"><Icon name="linkedin-in" /> LinkedIn</a>
+  <a href="https://stackoverflow.com/users/22083855/kayla-pratt" target="_blank"><Icon name="stack-overflow" /> Stack Overflow</a>
+  <a href="https://github.com/KaylaPrattA11y" target="_blank"><Icon name="github-alt" /> GitHub</a>
+  <a href="https://codepen.io/kaylapratt" target="_blank"><Icon name="codepen" /> Codepen</a>
+</div>
+
+<style>
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem var(--gap);
+  }
+  a {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--gap) * 0.5);
+    font-size: 0.85rem;
+    color: var(--clr-accent);
+  }
+</style>

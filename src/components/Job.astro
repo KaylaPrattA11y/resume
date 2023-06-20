@@ -1,0 +1,167 @@
+---
+export interface Props {
+	title: string;
+	employer: string;
+	year: string;
+	isPresent?: string;
+}
+
+const { title, employer, year, isPresent } = Astro.props;
+const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
+---
+
+<li>
+	<button type="button" data-dialog="open" aria-controls=`dialog${year}`>
+		<div>
+			<h3>{title}</h3>
+			<span>{duration}</span>
+		</div>
+		<div>{employer}</div>
+		<div class="lnr lnr-frame-expand" aria-hidden="true"></div>
+	</button>
+	<dialog id=`dialog${year}`>
+		<dialog-header>
+			<div>
+				<h2>{title}</h2>
+				<strong>{employer}</strong>
+				<small>{duration}</small>
+			</div>
+			<button class="lnr lnr-cross" type="button" aria-controls=`dialog${year}` data-dialog="close" aria-label="Close">
+			</button>
+		</dialog-header>
+		<dialog-main>
+			<slot />
+		</dialog-main>
+	</dialog>
+</li>
+<style>
+	button[data-dialog=open] {
+		position: relative;
+		padding: 1rem;
+		inline-size: 100%;
+		text-align: left;
+		background-color: var(--clr-dark);
+		border-radius: var(--border-radius);
+		border-color: var(--border-color);
+		transition: scale 150ms, box-shadow 150ms;
+	}
+	button[data-dialog=open] > div:first-child {
+		display: grid;
+		gap: var(--gap);
+		grid-template-columns: auto auto;
+	}
+	button[data-dialog=open]:hover {
+		scale: 1.015;
+		box-shadow:
+		0px 0.3px 1px rgba(0, 0, 0, 0.028),
+		0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
+		0px 5px 15px rgba(0, 0, 0, 0.07);
+	}
+	button[data-dialog=open] span {
+		text-align: right;
+	}
+	button[data-dialog=open] span,
+	button[data-dialog=open] div {
+		color: var(--clr-light);
+	}
+	button[data-dialog=open] h3 {
+		margin: 0;
+	}
+	button[data-dialog=close] {
+		background-color: transparent;
+		border: 0;
+		color: var(--clr-lighter);
+		padding: 0.25rem;
+		align-self: flex-start;
+	}
+	dialog {
+		color: var(--clr-light);
+	}
+	dialog::-webkit-scrollbar {
+		background-color: var(--clr-darkest);
+	}
+	dialog::-webkit-scrollbar-thumb {
+		background-color: var(--clr-light);
+		border-radius: 100vmax;
+		height: 0.5rem
+	}
+	dialog-header {
+		padding: 0.5rem;
+		display: flex;
+		justify-content: space-between;
+		gap: var(--gap);
+		background-color: var(--clr-darker);
+		color: var(--clr-light);
+		position: sticky;
+		top: 0;
+	}
+	dialog-header > div {
+		padding: 0.5rem 1rem;
+	}
+	dialog-header h2 {
+		color: var(--clr-lightest);
+		font-family: var(--font-family-sans);
+		font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+		margin: 0;
+	}
+	dialog-main {
+		padding: 1rem;
+		display: grid;
+		gap: var(--gap); 
+	}
+	@media (min-width: 768px) {
+		dialog-main {
+			grid-template-columns: 1.75fr 1fr;
+		}
+	}
+	li {
+		list-style-type: none;
+	}
+	li:not(:first-of-type) {
+		margin-block-start: 1rem;
+	}
+	[data-dialog=open] div:last-of-type {
+		font-size: 1.15rem;
+		text-align: right;
+		color: var(--clr-accent);
+	}
+</style>
+<script>
+const dialogToggleListener = e => {
+	if (!e.target.matches("button[data-dialog]")) return;
+	
+	const dialog = document.getElementById(e.target.getAttribute("aria-controls"));
+	const isOpen = dialog.hasAttribute("open");
+	
+	if (isOpen) {
+		dialog.close();
+		document.body.style.overflowY = "auto";
+		document.body.style.paddingInlineEnd = "0";
+	} else {
+		dialog.showModal();
+		document.body.style.overflowY = "hidden";
+		document.body.style.paddingInlineEnd = "1rem";
+	}
+}
+
+const handleClickOutside = e => {
+	const modal = e.target.closest("dialog[open]");
+	if (!modal) return;
+
+	const rect = modal.getBoundingClientRect();
+	const isInModal =
+		rect.top <= e.clientY &&
+		e.clientY <= rect.top + rect.height &&
+		rect.left <= e.clientX &&
+		e.clientX <= rect.left + rect.width;
+
+	if (!isInModal) {
+		modal.close();
+	}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.addEventListener("click", e => dialogToggleListener(e));
+	document.addEventListener("click", e => handleClickOutside(e));
+});
+</script>

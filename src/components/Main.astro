@@ -1,0 +1,61 @@
+---
+import EmploymentHistory from './EmploymentHistory.astro';
+import Bio from './Bio.astro';
+---
+
+<section aria-label="About" class="about">
+  <div>
+    <h1>Here's a little about me...</h1>
+    <Bio />
+  </div>
+  <div>
+    <EmploymentHistory />
+  </div>
+</section>
+
+<style>
+  h1 {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  h1::before,
+  h1::after {
+    position: absolute;
+    inset: 0;
+    margin-block: auto;
+    content: "";
+    border-radius: var(--border-radius);
+    transform: translateZ(-1px);
+  }
+  h1::before {
+    opacity: 0.5;
+    inline-size: 8rem;
+    block-size: 3rem;
+    background-color: var(--clr-accent);
+    backdrop-filter: hue-rotate(120deg);
+    -webkit-backdrop-filter: hue-rotate(120deg);
+    -moz-backdrop-filter: hue-rotate(120deg);
+  }
+  h1::after {
+    opacity: 0.25;
+    inline-size: 6rem;
+    block-size: 4rem;
+    background-color: var(--clr-accent);
+    filter: hue-rotate(120deg);
+    -webkit-filter: hue-rotate(120deg);
+    -moz-filter: hue-rotate(120deg);
+  }
+  section {
+    max-inline-size: 90svw;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    section {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--gap);
+      max-inline-size: 65svw;
+    }
+  }
+</style>
