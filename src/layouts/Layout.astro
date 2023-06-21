@@ -91,6 +91,7 @@ const { title } = Astro.props;
 	@media (max-width: 1366px) {
 		abbr {
 			text-decoration: none;
+			pointer-events: none;
 		}
 		abbr[title]::after {
 			content: " (" attr(title) ")";
