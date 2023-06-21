@@ -12,12 +12,12 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 
 <li>
 	<button type="button" data-dialog="open" aria-controls=`dialog${year}`>
-		<div>
+		<span>
 			<h3>{title}</h3>
 			<span>{duration}</span>
-		</div>
-		<div>{employer}</div>
-		<div class="lnr lnr-frame-expand" aria-hidden="true"></div>
+		</span>
+		<span>{employer}</span>
+		<span class="lnr lnr-frame-expand" aria-hidden="true"></span>
 	</button>
 	<dialog id=`dialog${year}`>
 		<dialog-header>
@@ -26,7 +26,12 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 				<strong>{employer}</strong>
 				<small>{duration}</small>
 			</div>
-			<button class="lnr lnr-cross" type="button" aria-controls=`dialog${year}` data-dialog="close" aria-label="Close">
+			<button 
+			class="lnr lnr-cross" 
+			type="button" 
+			aria-controls=`dialog${year}` 
+			data-dialog="close" 
+			aria-label="Close">
 			</button>
 		</dialog-header>
 		<dialog-main>
@@ -45,10 +50,10 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 		border-color: var(--border-color);
 		transition: scale 150ms, box-shadow 150ms;
 	}
-	button[data-dialog=open] > div:first-child {
-		display: grid;
+	button[data-dialog=open] > span:first-child {
+		display: flex;
+		justify-content: space-between;
 		gap: var(--gap);
-		grid-template-columns: auto auto;
 	}
 	button[data-dialog=open]:hover {
 		scale: 1.015;
@@ -58,11 +63,13 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 		0px 5px 15px rgba(0, 0, 0, 0.07);
 	}
 	button[data-dialog=open] span {
-		text-align: right;
-	}
-	button[data-dialog=open] span,
-	button[data-dialog=open] div {
+		display: block;
 		color: var(--clr-light);
+	}
+	button[data-dialog=open] .lnr {
+		font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+		color: var(--clr-accent);
+		text-align: right;
 	}
 	button[data-dialog=open] h3 {
 		margin: 0;
