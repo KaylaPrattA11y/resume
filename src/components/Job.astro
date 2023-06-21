@@ -41,7 +41,7 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 		inline-size: 100%;
 		text-align: left;
 		background-color: var(--clr-dark);
-		border-radius: var(--border-radius);
+		border-radius: var(--border-radius-wacky);
 		border-color: var(--border-color);
 		transition: scale 150ms, box-shadow 150ms;
 	}
@@ -130,41 +130,50 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 	}
 </style>
 <script>
-const dialogToggleListener = e => {
-	if (!e.target.matches("button[data-dialog]")) return;
-	
-	const dialog = document.getElementById(e.target.getAttribute("aria-controls"));
-	const isOpen = dialog.hasAttribute("open");
-	
+const hideVerticalBodyScrollbar = isOpen => {
 	if (isOpen) {
-		dialog.close();
 		document.body.style.overflowY = "auto";
 		document.body.style.paddingInlineEnd = "0";
 	} else {
-		dialog.showModal();
 		document.body.style.overflowY = "hidden";
 		document.body.style.paddingInlineEnd = "1rem";
 	}
 }
 
-const handleClickOutside = e => {
-	const modal = e.target.closest("dialog[open]");
-	if (!modal) return;
+const handleClickDialogButton = e => {
+	if (!e.target.matches("button[data-dialog]")) return;
+	
+	const dialog = document.getElementById(e.target.getAttribute("aria-controls"));
+	const isOpen = dialog.hasAttribute("open");
 
-	const rect = modal.getBoundingClientRect();
-	const isInModal =
+	hideVerticalBodyScrollbar(isOpen);
+	if (isOpen) {
+		dialog.close();
+	} else {
+		dialog.showModal();
+	}
+}
+
+const handleClickOutsideDialog = e => {
+	const dialog = e.target.closest("dialog[open]");
+	if (!dialog) return;
+
+	const rect = dialog.getBoundingClientRect();
+	const isInDialog =
 		rect.top <= e.clientY &&
 		e.clientY <= rect.top + rect.height &&
 		rect.left <= e.clientX &&
 		e.clientX <= rect.left + rect.width;
 
-	if (!isInModal) {
-		modal.close();
+	if (!isInDialog) {
+		dialog.close();
 	}
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-	document.addEventListener("click", e => dialogToggleListener(e));
-	document.addEventListener("click", e => handleClickOutside(e));
-});
+const initDialogs = () => {
+	document.addEventListener("click", e => handleClickDialogButton(e));
+	document.addEventListener("click", e => handleClickOutsideDialog(e));
+}
+
+document.addEventListener("DOMContentLoaded", () => initDialogs());
 </script>

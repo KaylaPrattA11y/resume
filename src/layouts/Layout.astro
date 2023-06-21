@@ -29,7 +29,9 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		--gap: 1rem;
-		--border-radius: 26% 74% 28% 72% / 65% 32% 68% 35%;
+		--border-radius-wacky: 26% 74% 28% 72% / 65% 32% 68% 35%;
+		--border-radius-sm: 3px;
+		--border-radius-lg: 10px;
 		--border-color: rgba(0,0,0,0.15);
 		--font-family-sans: "Oxygen Regular", sans-serif;
 		--font-family-cursive: "Caveat Regular", cursive;
@@ -123,7 +125,7 @@ const { title } = Astro.props;
 	:modal {
 		padding: 0;
 		border: 0;
-		border-radius: 10px;
+		border-radius: var(--border-radius-lg);
 		background-color: var(--clr-dark);
 	}
 	@media (min-width: 768px) {
@@ -176,6 +178,21 @@ const { title } = Astro.props;
     background-color: var(--clr-darker);
     color: var(--clr-accent);
     padding: 0.015rem 0.45rem;
-    border-radius: 3px;
+    border-radius: var(--border-radius-sm);
   }
+	@keyframes dialogIn {
+		from { 
+			translate: 0 -1%;
+			scale: 1.025;
+			opacity: 0;
+		}
+		to { 
+			translate: 0 0;
+			scale: 1;
+			opacity: 1 ;
+		}
+	}
+	dialog[open] {
+		animation: dialogIn 200ms ease-in;
+	}
 </style>
