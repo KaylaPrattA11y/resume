@@ -45,10 +45,13 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 		padding: 1rem;
 		inline-size: 100%;
 		text-align: left;
-		background-color: var(--clr-dark);
 		border-radius: var(--border-radius-wacky);
 		border-color: var(--border-color);
-		transition: scale 150ms, box-shadow 150ms;
+		transition: scale 150ms;
+		background-color: rgba(54, 62, 66, 0.5);
+		box-shadow: var(--box-shadow);
+		backdrop-filter: blur( 4px );
+		border: 1px solid rgba(54, 62, 66, 0.75);
 	}
 	button[data-dialog=open] > span:first-child {
 		display: flex;
@@ -57,10 +60,6 @@ const duration = `${year}${isPresent === "true" ? " - Present" : ""}`;
 	}
 	button[data-dialog=open]:hover {
 		scale: 1.015;
-		box-shadow:
-		0px 0.3px 1px rgba(0, 0, 0, 0.028),
-		0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
-		0px 5px 15px rgba(0, 0, 0, 0.07);
 	}
 	button[data-dialog=open] span {
 		display: block;
@@ -193,6 +192,7 @@ const handleClickOutsideDialog = e => {
 		e.clientX <= rect.left + rect.width;
 
 	if (!isInDialog) {
+		hideVerticalBodyScrollbar(true)
 		dialog.close();
 	}
 };
@@ -202,5 +202,8 @@ const initDialogs = () => {
 	document.addEventListener("click", e => handleClickOutsideDialog(e));
 }
 
+const dialogs = document.querySelectorAll("dialog");
+
+dialogs.forEach(dialog => dialog.addEventListener("cancel", () => hideVerticalBodyScrollbar(true)));
 document.addEventListener("DOMContentLoaded", () => initDialogs());
 </script>

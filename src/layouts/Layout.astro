@@ -37,6 +37,10 @@ const { title } = Astro.props;
 		--border-radius-sm: 3px;
 		--border-radius-lg: 10px;
 		--border-color: rgba(0,0,0,0.15);
+		--box-shadow: 
+			0px 0.3px 1px rgba(0, 0, 0, 0.028),
+			0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
+			0px 5px 15px rgba(0, 0, 0, 0.07);
 		--font-family-sans: 'Overpass Variable', sans-serif;
 		--font-family-cursive: 'Caveat Variable', cursive;
 		--font-size-base: 1rem;
@@ -44,10 +48,10 @@ const { title } = Astro.props;
 		--clr-light: hsl(0, 20%, 75%);
 		--clr-lighter: hsl(0, 30%, 85%);
 		--clr-lightest: hsl(0, 50%, 97%);
-		--clr-dark: hsl(275, 5%, 20%);
-		--clr-darker: hsl(275, 5%, 16%);
-		--clr-darkest: hsl(275, 5%, 13%);
-		--clr-rose: hsl(342, 75%, 61%);
+		--clr-dark: hsl(196, 10%, 21%);
+		--clr-darker: hsl(196, 10%, 17%);
+		--clr-darkest: hsl(196, 10%, 14%);
+		--clr-rose: #e6517e;
 		--clr-leaf: hsl(167, 87%, 49%);
 		--clr-mint: hsl(167, 100%, 93%);
 
@@ -56,6 +60,19 @@ const { title } = Astro.props;
 		--clr-subheading: var(--clr-lighter);
 		--clr-background: var(--clr-darkest);
 		--clr-accent: var(--clr-leaf);
+		--moons:
+		url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath1080%26quot%3b)' fill='none'%3e%3ccircle r='25.26' cx='1293.99' cy='451.79' fill='rgba(65%2c 65%2c 65%2c 0.75)'%3e%3c/circle%3e%3ccircle r='18.585' cx='1195.27' cy='352.28' fill='rgba(43%2c 58%2c 79%2c 1)'%3e%3c/circle%3e%3ccircle r='29.315' cx='646.06' cy='287.55' fill='rgba(53%2c 53%2c 53%2c 1)'%3e%3c/circle%3e%3ccircle r='46.865' cx='1029.83' cy='89.9' fill='rgba(24%2c 51%2c 50%2c 1)'%3e%3c/circle%3e%3ccircle r='37.145' cx='809.06' cy='517.3' fill='rgba(43%2c 58%2c 79%2c 1)'%3e%3c/circle%3e%3ccircle r='29.465' cx='493.73' cy='397.45' fill='rgba(53%2c 53%2c 53%2c 1)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath1080'%3e%3crect width='1440' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e");
+	}
+	@keyframes moons {
+		from { background-position: bottom }
+		to { background-position: top }
+	}
+	@media (prefers-reduced-motion: reduce) {
+  * {
+      animation: none !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+		}
 	}
 	body {
 		display: flex;
@@ -65,8 +82,18 @@ const { title } = Astro.props;
 		font-size: clamp(var(--font-size-base), 2vw, 1.15rem);
 		line-height: calc(var(--font-size-base) * 1.5);
 		color: var(--clr-text);
-		background-color: var(--clr-background);
+		background-image: var(--moons);
+		background-size: 100svw;
+		background-color: var(--clr-darkest);
+		backdrop-filter: blur(4px);
+		background-attachment: fixed;
+		background-repeat: no-repeat;
 		min-block-size: 100svh;
+		animation-name: moons;
+		animation-duration: 200s;
+		animation-direction: alternate;
+		animation-iteration-count: infinite;
+		position: relative;
 	}
 	main {
 		flex-grow: 1;
