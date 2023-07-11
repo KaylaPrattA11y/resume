@@ -20,7 +20,7 @@ const { title } = Astro.props;
 		<meta name="description" content="Kayla Pratt's resume, biography, and code samples.">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/resume/favicon.png" />
-		<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+		<link rel="stylesheet" href="/resume/iconfont/index.css" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -41,17 +41,21 @@ const { title } = Astro.props;
 			0px 0.3px 1px rgba(0, 0, 0, 0.028),
 			0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
 			0px 5px 15px rgba(0, 0, 0, 0.07);
-		--font-family-sans: 'Overpass Variable', sans-serif;
-		--font-family-cursive: 'Caveat Variable', cursive;
-		--font-size-base: 1rem;
+
+		--font-family-h: 'Caveat Variable', cursive;
+		--font-family-p: 'Overpass Variable', sans-serif;
+		--font-size-sm: clamp(0.75rem, 1vw, 0.8rem);
+		--font-size-md: clamp(1rem, 2vw, 1.015rem);
+		--font-size-lg: clamp(1.65rem, 1vw, 1.85rem);
+		--font-size-xl: clamp(2.5rem, 3vw, 3rem);
 
 		--clr-light: hsl(0, 20%, 75%);
 		--clr-lighter: hsl(0, 30%, 85%);
-		--clr-lightest: hsl(0, 50%, 97%);
-		--clr-dark: hsl(196, 10%, 21%);
-		--clr-darker: hsl(196, 10%, 17%);
-		--clr-darkest: hsl(196, 10%, 14%);
-		--clr-rose: #e6517e;
+		--clr-lightest: hsl(0, 47%, 97%);
+		--clr-dark: hsl(196, 10%, 18%);
+		--clr-darker: hsl(196, 10%, 14%);
+		--clr-darkest: hsl(200, 10%, 11%);
+		--clr-rose: hsl(342, 75%, 61%);
 		--clr-leaf: hsl(167, 87%, 49%);
 		--clr-mint: hsl(167, 100%, 93%);
 
@@ -78,9 +82,9 @@ const { title } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		margin: 0;
-		font-family: var(--font-family-sans);
-		font-size: clamp(var(--font-size-base), 2vw, 1.15rem);
-		line-height: calc(var(--font-size-base) * 1.5);
+		font-family: var(--font-family-p);
+		font-size: var(--font-size-md);
+		line-height: calc(var(--font-size-md) * 1.5);
 		color: var(--clr-text);
 		background-image: var(--moons);
 		background-size: 100svw;
@@ -99,16 +103,19 @@ const { title } = Astro.props;
 		flex-grow: 1;
 	}
 	button {
-		font-family: var(--font-family-sans);
-		font-size: clamp(0.85rem, 1vw, 1rem);
+		font-family: var(--font-family-p);
+		font-size: var(--font-size-sm);
 		cursor: pointer;
 	}
 	h1 {
-		font-size: clamp(2.5rem, 3vw, 3rem);
-		font-family: var(--font-family-cursive);
+		font-family: var(--font-family-h);
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		line-height: var(--font-size-xl);
 	}
 	h2 {
-		font-size: clamp(1.45rem, 1vw, 1.65rem);
+		font-size: var(--font-size-lg);
+		line-height: calc(var(--font-size-lg) * 1.25);
 	}
 	abbr[title] {
 		cursor: help;
@@ -157,7 +164,7 @@ const { title } = Astro.props;
 		}
 	}
 	button {
-		font-family: var(--font-family-sans);
+		font-family: var(--font-family-p);
 	}
 	button > * {
 		pointer-events: none;
@@ -166,26 +173,16 @@ const { title } = Astro.props;
     padding-inline-start: 0;
   }
   ul.ul li {
-    font-size: clamp(0.9rem, 1vw, 1rem);
+    font-size: var(--font-size-md);
     margin-bottom: 1em;
     color: var(--clr-light);
 		max-inline-size: 60ch;
-  }
-  ul.ul.list-responsibilities > li::marker {
-    content: "☕  ";
-  }
-	ul.ul.list-achievements > li::marker {
-    content: "💯  ";
   }
 	ul.ul > li > ul.ul {
 		margin-block-start: 1em;
 	}
 	ul.ul > li > ul.ul > li {
-		font-size: 0.75rem;
-	}
-	ul.ul > li > ul.ul li::marker {
-		content: "☼  ";
-		color: var(--clr-lightest);
+		font-size: var(--font-size-sm);
 	}
   ul.tags {
 		position: sticky;
@@ -197,7 +194,7 @@ const { title } = Astro.props;
     gap: calc(var(--gap) * 0.25);
   }
   ul.tags li {
-    font-size: clamp(0.75rem, 1vw, 0.8rem);
+    font-size: var(--font-size-sm);
     background-color: var(--clr-darker);
     color: var(--clr-lighter);
     padding: 0.015rem 0.45rem;

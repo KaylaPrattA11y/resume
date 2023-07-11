@@ -10,8 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource-variable/caveat": "^5.0.3",
-    "@fontsource-variable/overpass": "^5.0.4",
+    "@fontsource-variable/caveat": "^5.0.5",
+    "@fontsource-variable/overpass": "^5.0.6",
+    "@fontsource/bubblegum-sans": "^5.0.5",
     "astro": "^2.6.6"
   }
 }
