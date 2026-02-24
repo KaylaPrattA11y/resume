@@ -1,10 +1,10 @@
 ---
+import "../scss/site.scss";
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-// Supports weights 400-700
-import '@fontsource-variable/caveat';
-// Supports weights 100-900
-import '@fontsource-variable/overpass';
+import '@fontsource/dm-serif-text';
+import '@fontsource-variable/karla';
+import '@fontsource/dm-mono';
 
 export interface Props {
 	title: string;
@@ -26,189 +26,17 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<Header />
-		<slot />
+		<main id="main" class="page-main">
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--gap: 1rem;
-		--border-radius-wacky: 26% 74% 28% 72% / 65% 32% 68% 35%;
-		--border-radius-sm: 3px;
-		--border-radius-lg: 10px;
-		--border-color: rgba(0,0,0,0.15);
-		--box-shadow: 
-			0px 0.3px 1px rgba(0, 0, 0, 0.028),
-			0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
-			0px 5px 15px rgba(0, 0, 0, 0.07);
 
-		--font-family-h: 'Caveat Variable', cursive;
-		--font-family-p: 'Overpass Variable', sans-serif;
-		--font-size-sm: clamp(0.75rem, 1vw, 0.8rem);
-		--font-size-md: clamp(1rem, 2vw, 1.015rem);
-		--font-size-lg: clamp(1.65rem, 1vw, 1.85rem);
-		--font-size-xl: clamp(2.5rem, 3vw, 3rem);
-
-		--clr-light: hsl(0, 20%, 75%);
-		--clr-lighter: hsl(0, 30%, 85%);
-		--clr-lightest: hsl(0, 47%, 97%);
-		--clr-dark: hsl(196, 10%, 18%);
-		--clr-darker: hsl(196, 10%, 14%);
-		--clr-darkest: hsl(200, 10%, 11%);
-		--clr-rose: hsl(342, 75%, 61%);
-		--clr-leaf: hsl(167, 87%, 49%);
-		--clr-mint: hsl(167, 100%, 93%);
-
-		--clr-text: var(--clr-light);
-		--clr-heading: var(--clr-lightest);
-		--clr-subheading: var(--clr-lighter);
-		--clr-background: var(--clr-darkest);
-		--clr-accent: var(--clr-leaf);
-		--moons:
-		url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg clip-path='url(%26quot%3b%23SvgjsClipPath1080%26quot%3b)' fill='none'%3e%3ccircle r='25.26' cx='1293.99' cy='451.79' fill='rgba(65%2c 65%2c 65%2c 0.75)'%3e%3c/circle%3e%3ccircle r='18.585' cx='1195.27' cy='352.28' fill='rgba(43%2c 58%2c 79%2c 1)'%3e%3c/circle%3e%3ccircle r='29.315' cx='646.06' cy='287.55' fill='rgba(53%2c 53%2c 53%2c 1)'%3e%3c/circle%3e%3ccircle r='46.865' cx='1029.83' cy='89.9' fill='rgba(24%2c 51%2c 50%2c 1)'%3e%3c/circle%3e%3ccircle r='37.145' cx='809.06' cy='517.3' fill='rgba(43%2c 58%2c 79%2c 1)'%3e%3c/circle%3e%3ccircle r='29.465' cx='493.73' cy='397.45' fill='rgba(53%2c 53%2c 53%2c 1)'%3e%3c/circle%3e%3c/g%3e%3cdefs%3e%3cclipPath id='SvgjsClipPath1080'%3e%3crect width='1440' height='560' x='0' y='0'%3e%3c/rect%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e");
-	}
-	@keyframes moons {
-		from { background-position: bottom }
-		to { background-position: top }
-	}
-	@media (prefers-reduced-motion: reduce) {
-  * {
-      animation: none !important;
-      transition-duration: 0s !important;
-      transition-delay: 0s !important;
+<style>
+	@layer components {
+		.page-main {
+			container: page-main / inline-size;
 		}
 	}
-	body {
-		display: flex;
-		flex-direction: column;
-		margin: 0;
-		font-family: var(--font-family-p);
-		font-size: var(--font-size-md);
-		line-height: calc(var(--font-size-md) * 1.5);
-		color: var(--clr-text);
-		background-image: var(--moons);
-		background-size: 100svw;
-		background-color: var(--clr-darkest);
-		backdrop-filter: blur(4px);
-		background-attachment: fixed;
-		background-repeat: no-repeat;
-		min-block-size: 100svh;
-		animation-name: moons;
-		animation-duration: 200s;
-		animation-direction: alternate;
-		animation-iteration-count: infinite;
-		position: relative;
-	}
-	main {
-		flex-grow: 1;
-	}
-	button {
-		font-family: var(--font-family-p);
-		font-size: var(--font-size-sm);
-		cursor: pointer;
-	}
-	h1 {
-		font-family: var(--font-family-h);
-		font-size: var(--font-size-xl);
-		font-weight: 700;
-		line-height: var(--font-size-xl);
-	}
-	h2 {
-		font-size: var(--font-size-lg);
-		line-height: calc(var(--font-size-lg) * 1.25);
-	}
-	abbr[title] {
-		cursor: help;
-	}
-	@media (max-width: 1366px) {
-		abbr {
-			text-decoration: none;
-			pointer-events: none;
-		}
-		abbr[title]::after {
-			content: " (" attr(title) ")";
-		}
-
-	}
-	a:any-link,
-	a:-webkit-any-link,
-	a:visited {
-		color: var(--clr-accent);
-	}
-	:where(h1, h2, h3, h4, h5, h6) {
-		color: var(--clr-heading);
-	}
-	:where(h1, h2, h3, h4, h5, h6, p) {
-		max-inline-size: 60ch;
-	}
-	:focus-visible {
-		outline: 2px solid var(--clr-rose);
-	}
-	::selection {
-		background-color: var(--clr-accent);
-		color: var(--clr-darkest);
-	}
-	::backdrop {
-		background-color: rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(2px);
-	}
-	:modal {
-		padding: 0;
-		border: 0;
-		border-radius: var(--border-radius-lg);
-		background-color: var(--clr-dark);
-	}
-	@media (min-width: 768px) {
-		:modal {
-			max-inline-size: calc((768px - 6px) - 2em);
-		}
-	}
-	button {
-		font-family: var(--font-family-p);
-	}
-	button > * {
-		pointer-events: none;
-	}
-	ul:not(.ul) {
-    padding-inline-start: 0;
-  }
-  ul.ul li {
-    font-size: var(--font-size-md);
-    margin-bottom: 1em;
-    color: var(--clr-light);
-		max-inline-size: 60ch;
-  }
-	ul.ul > li > ul.ul {
-		margin-block-start: 1em;
-	}
-	ul.ul > li > ul.ul > li {
-		font-size: var(--font-size-sm);
-	}
-  ul.tags {
-		position: sticky;
-		top: 6.5rem;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: calc(var(--gap) * 0.25);
-  }
-  ul.tags li {
-    font-size: var(--font-size-sm);
-    background-color: var(--clr-darker);
-    color: var(--clr-lighter);
-    padding: 0.015rem 0.45rem;
-    border-radius: var(--border-radius-sm);
-  }
-	.skip:not(:focus):not(:focus-within) {
-    position: absolute!important;
-    width: 1px!important;
-    height: 1px!important;
-    padding: 0!important;
-    margin: -1px!important;
-    overflow: hidden!important;
-    clip: rect(0,0,0,0)!important;
-    white-space: nowrap!important;
-    border: 0!important;
-  }
 </style>

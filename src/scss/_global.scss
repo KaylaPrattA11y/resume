@@ -1,0 +1,107 @@
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f0e8;
+  --accent: #bb462c;
+  --accent2: #2f5fc8;
+  --muted: #6b6258;
+  --line: #c9bfb0;
+
+  --gap: 1rem;
+  --border-radius-wacky: 26% 74% 28% 72% / 65% 32% 68% 35%;
+  --border-radius-sm: 3px;
+  --border-radius-lg: 10px;
+  --border-color: rgba(0,0,0,0.15);
+  --box-shadow: 
+    0px 0.3px 1px rgba(0, 0, 0, 0.028),
+    0px 1.1px 3.4px rgba(0, 0, 0, 0.042),
+    0px 5px 15px rgba(0, 0, 0, 0.07);
+
+  --font-family-serif: 'DM Serif Text', serif;
+  --font-family-sans: 'Karla Variable', sans-serif;
+  --font-family-mono: 'DM Mono', monospace;
+  --font-size-sm: clamp(0.75rem, 1vw, 0.8rem);
+  --font-size-md: clamp(1rem, 2vw, 1.015rem);
+  --font-size-lg: clamp(1.65rem, 1vw, 1.85rem);
+  --font-size-xl: clamp(2.5rem, 3vw, 3rem);
+
+  --fadeUp: fadeUp 0.7s ease forwards;
+}
+
+@layer base {
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+	body {
+		margin: 0;
+		font-family: var(--font-family-sans);
+		font-size: var(--font-size-md);
+		line-height: calc(var(--font-size-md) * 1.5);
+		color: var(--ink);
+		background-color: var(--paper);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+	}
+	abbr[title] {
+		cursor: help;
+	}
+	a:any-link,
+	a:-webkit-any-link,
+	a:visited {
+		color: var(--accent2);
+	}
+	:focus-visible {
+		outline: 2px solid var(--accent);
+	}
+	::selection {
+		background-color: var(--accent);
+		color: var(--paper);
+	}
+	::backdrop {
+		background-color: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(2px);
+	}
+	button {
+		font-size: var(--font-size-md);
+		font-family: var(--font-family-sans);
+		margin: 0;
+		padding: 0.5rem 1rem;
+		appearance: none;
+	}
+	button > * {
+		pointer-events: none;
+	}
+	ul:not(.ul) {
+    padding-inline-start: 0;
+  }
+  ul.ul li {
+    font-size: var(--font-size-md);
+    margin-bottom: 1em;
+    color: var(--muted);
+		max-inline-size: 60ch;
+  }
+	ul.ul > li > ul.ul {
+		margin-block-start: 1em;
+	}
+	ul.ul > li > ul.ul > li {
+		font-size: var(--font-size-sm);
+	}
+	.skip:not(:focus):not(:focus-within) {
+    position: absolute!important;
+    width: 1px!important;
+    height: 1px!important;
+    padding: 0!important;
+    margin: -1px!important;
+    overflow: hidden!important;
+    clip: rect(0,0,0,0)!important;
+    white-space: nowrap!important;
+    border: 0!important;
+  }
+}

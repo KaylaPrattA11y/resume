@@ -1,0 +1,35 @@
+---
+export interface Props {
+	degree: string;
+	location: string;
+	year: string; // YYYY
+}
+
+const { degree, location, year } = Astro.props;
+---
+
+<article>
+	<h4>{degree}</h4>
+	<div>{location} · {year}</div>
+</article>
+
+<style>
+	@layer components {
+		article {
+			margin-bottom: 28px;
+			opacity: 0;
+			animation: var(--fadeUp);
+		}
+		h4 {
+			font-family: var(--font-family-serif);
+			font-size: 1.05rem;
+			font-weight: 700;
+		}
+		div {
+			font-family: var(--font-family-mono);
+			font-size: 0.86rem;
+			color: var(--muted);
+			letter-spacing: 0.06em;
+		}
+	}
+</style>

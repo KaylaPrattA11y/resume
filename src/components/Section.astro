@@ -1,0 +1,52 @@
+---
+export interface SectionProps {
+	heading: string;
+  id: string;
+}
+
+const { heading, id } = Astro.props;
+---
+
+<section class="section" aria-labelledby={id}>
+  <div>
+    <div class="section-header">
+      <h2 id={id}>{heading}</h2>
+    </div>
+    <div class="section-content">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+@layer components {
+  .section {
+    container: section / inline-size;
+    opacity: 0;
+		animation: var(--fadeUp);
+  }
+  .section > div {
+    display: grid;
+    gap: 0.5rem;
+    @container section (width >=600px) {
+      grid-template-columns: minmax(100px, 250px) 1fr;
+    }
+  }
+  .section-header h2 {
+    font-family: var(--font-family-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 4px;
+    position: sticky;
+    top: 20px;
+  }
+  .section-content {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    padding-bottom: 36px;
+  }
+}
+</style>

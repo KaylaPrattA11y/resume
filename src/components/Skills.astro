@@ -1,0 +1,43 @@
+---
+export interface SectionProps {
+	skills: string[];
+}
+
+const { skills } = Astro.props;
+---
+
+<ul class="skills">
+  {skills.map((skill: string) => (
+    <li>{skill}</li>
+  ))}
+</ul>
+
+<style>
+@layer components {
+  .skills {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skills > li {
+    font-family: var(--font-family-mono);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 2px;
+    color: var(--ink);
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .skills > li:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+}
+</style>

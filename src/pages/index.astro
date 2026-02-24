@@ -1,10 +1,126 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Main from '../components/Main.astro';
+import Section from '../components/Section.astro';
+import Skills from '../components/Skills.astro';
+import Job from '../components/Job.astro';
+import Highlight from '../components/Highlight.astro';
+import Education from '../components/Education.astro';
+
+const skills = [
+	"HTML5 / Semantic Markup",
+	"ARIA",
+	"WCAG 2.1 AA",
+	"Keyboard & Screen Reader",
+	"CSS3 / SCSS / Sass",
+	"Design Tokens",
+	"React",
+	"Redux Toolkit",
+	"RTK Query",
+	"Astro",
+	"Hugo",
+	"Pug",
+	"TypeScript",
+	"ES6+",
+	"Webpack / Babel",
+	"Jest",
+	"React Testing Library",
+	"ESLint / Stylelint",
+	"Git / CI-CD",
+	"Adobe Target",
+	"Adobe Analytics",
+	"Technical Mentorship"
+];
+
 ---
 
-<Layout title="Kayla Pratt | A11y Front-End Web Developer">
-	<main id="main">
-		<Main />
-	</main>
+<Layout title="Kayla Pratt | React & A11y | Front-End Web Developer">
+	<Section heading="Summary" id="summary">
+		<p>Senior front-end engineer with 10+ years of experience delivering accessible, high-traffic web applications. Deep expertise in WCAG 2.1 AA, semantic HTML, and ARIA, combined with modern front-end stacks (React, Astro, Hugo, TypeScript). Proven track record leading UI architecture, design system integration, and performance optimization for complex, multi-brand platforms.</p>
+	</Section>
+	<Section heading="Core Skills" id="core-skills">
+		<Skills skills={skills} />
+	</Section>
+	<Section heading="Employment" id="employment">
+		<Job
+			employer="Corpay"
+			title="Senior Front-End Engineer"
+			dateStart="01/2022"
+			location="Washington D.C. (remote)"
+			points={[
+				"Lead front-end and accessibility implementation for enterprise web apps using React, Hugo, TypeScript, and SCSS, ensuring WCAG 2.1 AA compliance.",
+				"Architect feature-based SPA structure with lazy-loaded routes, shared UI components, and robust state management via Redux Toolkit / RTK Query.",
+				"Partner with design and product to define accessible patterns for navigation, forms, dialogs, data grids, and error handling across multiple brands."
+			]}
+		/>
+		<Job
+			employer="College of Southern Maryland"
+			title="Front-End Web Developer"
+			dateStart="11/2021"
+			dateEnd="01/2022"
+			location="La Plata, MD"
+			points={[
+				"Built accessible, content-rich sites using WordPress and modular SCSS with a focus on performance and SEO.",
+				"Implemented semantic, reusable templates and components, enforcing accessibility standards through reviews and tooling."
+			]}
+		/>
+		<Job
+			employer="Emory University"
+			title="Front-End Web Developer"
+			dateStart="05/2017"
+			dateEnd="11/2021"
+			location="Atlanta, GA"
+			points={[
+				"Created a pattern library for the Emory Brand using patternlab.io, Mustache, Gulp, SASS, and Bootstrap.",
+				"Audited and developed the Office of the President website and an Emory Standard Template (Bootstrap 4, Sass, Nunjucks, Node/Gulp) used by multiple clients.",
+				"Redesigned and built the Human Resources website using the Emory Standard Template with a modern, accessible design."
+			]}
+		/>
+		<Job
+			employer="St. Mary's College of Maryland"
+			title="Web Developer"
+			dateStart="05/2015"
+			dateEnd="05/2017"
+			location="St. Mary's City, MD"
+			points={[
+				"Streamlined styles and themes using Zurb Foundation, Underscores, and SASS; relaunched Support, Admissions, and President's websites.",
+				"Maintained WCAG 2.0 AA compliance across all college sites; provided training and maintained WordPress multisite platforms.",
+				"Delivered web analytics reports, managed Gravity Forms, and provided graphic design and photography support."
+			]}
+		/>
+		<Job
+			employer="College of Southern Maryland"
+			title="Web Programmer"
+			dateStart="08/2011"
+			dateEnd="04/2015"
+			location="La Plata, MD"
+		/>
+		<Job
+			employer="Resource Management Concepts, Inc."
+			title="Graphic Designer"
+			dateStart="05/2009"
+			dateEnd="05/2010"
+			location="Lexington Park, MD"
+		/>
+	</Section>
+	<Section heading="Highlight" id="highlight">
+		<Highlight 
+			heading="Selected Project"
+			content="Conversion of a multi-brand Hugo application to a React/TypeScript SPA with complex workflows, protected routes, and accessible, data-heavy UIs including tables, filters, and off-canvas panels."
+		/>
+	</Section>
+	<Section heading="Education" id="education">
+		<Education 
+			degree="B.S. — Digital Design"
+			location="Towson University, Towson, MD"
+			year="2010"
+		/>
+	</Section>
 </Layout>
+
+<style>
+	p {
+		font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--ink);
+	}
+</style>

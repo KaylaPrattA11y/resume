@@ -1,43 +1,70 @@
 ---
-import Social from "./Social.astro";
-import logo from "../img/logo.png";
+
 ---
 
-<header aria-label="Main" id="top">
-  <a href="#main" class="skip">Skip to main content</a>
-  <img src={logo} alt="Kayla Pratt" />
-  <Social/>
+<a href="#main" class="skip">Skip to main content</a>
+<header aria-label="Site header" id="top" class="site-header">
+  <div>
+    <div class="site-title">
+      <h1>Kayla <div>Pratt</div></h1>
+      <h2>Senior Front-End Engineer  ·  React  ·  <abbr title="Web Content Accessibility Guidelines">WCAG</abbr>/<abbr title="Accessibility">A11y</abbr> Specialist</h2>
+    </div>
+    <div class="site-contact">
+      <div>Leonardtown, MD</div>
+      <div>(240) 577-8635</div>
+      <div>kaylapratt@protonmail.com</div>
+      <div><a href="https://github.com/KaylaPrattA11y" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
+  </div>
 </header>
 <style>
-  header {
-    background-color: var(--clr-darker);
-    box-shadow: 0 8px 32px 0 rgba(38, 44, 58, 0.37);
-		backdrop-filter: blur(4px);
-    border-bottom: 1px solid rgba(54, 62, 66, 0.75);
-    box-shadow: var(--box-shadow);
-    color: var(--clr-lighter);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--gap);
-    position: sticky;
-    top: 0;
-    padding: 0.5rem 1rem;
-    z-index: 1;
-  }
-  img {
-    filter: hue-rotate(330deg);
-    -webkit-filter: hue-rotate(330deg); 
-    -moz-filter: hue-rotate(330deg);
-    align-self: flex-start;
-  }
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      gap: 0;
+  @layer components {
+    .site-header {
+      container: site-header / inline-size;
+      padding-block-end: 28px;
+      border-block-end: 2.5px solid var(--ink);
+      margin-block-end: 36px;
+      animation: var(--fadeUp);
     }
-    img {
-      align-self: unset;
+    .site-header > div {
+      display: grid;
+      gap: 0.5rem;
+      @container site-header (width >= 600px) {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+    }
+    :where(h1,h2) {
+      margin: 0;
+    }
+    h1 {
+      margin: 0;
+      font-family: var(--font-family-serif);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    h1 > div {
+      color: var(--accent);
+    }
+    :where(h2, .site-contact) {
+      font-family: var(--font-family-mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+    }
+    h2 {
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-block-start: 10px;
+    }
+    .site-contact {
+      line-height: 1.9;
+      color: var(--muted);
+      @container site-header (width >= 600px) {
+        text-align: right;
+      }
     }
   }
 </style>

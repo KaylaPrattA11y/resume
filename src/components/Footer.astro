@@ -1,16 +1,30 @@
-<footer aria-label="Main">
-  <p>This was built using <a href="https://astro.build/" target="_blank">Astro</a>. Groovy! <a href="#top" class="skip">Back to top</a></p>
+---
+import { Icon } from 'astro-icon/components'; // https://www.astroicon.dev/getting-started/
+---
+
+<footer aria-label="Site footer" class="site-footer">
+  <p>Kayla Pratt  ·  Resume  ·  10+ Years Front-End  ·  WCAG Specialist</p>
+  <div role="group">
+    <a href="https://github.com/KaylaPrattA11y" aria-label="GitHub"><Icon name="github" /></a>
+    <a href="https://www.linkedin.com/in/kayla-pratt-468b60b5/" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+    <a href="https://codepen.io/kaylapratt" aria-label="CodePen"><Icon name="codepen" /></a>
+  </div>
 </footer>
 <style>
-footer {
-  text-align: center;
-  font-size: var(--font-size-sm);
-  background-color: rgba(54, 62, 66, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(38, 44, 58, 0.37);
-  backdrop-filter: blur( 4px );
-  border-top: 1px solid rgba(54, 62, 66, 0.75);
-}
-p {
-  max-inline-size: 100%;
-}
+  @layer components {
+    .site-footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-family: var(--font-family-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    svg {
+      inline-size: 1.25rem;
+      block-size: 1.25rem;
+    }
+  }
 </style>

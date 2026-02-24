@@ -1,0 +1,40 @@
+---
+export interface Props {
+	heading: string;
+	content: string;
+}
+
+const { heading, content } = Astro.props;
+---
+
+<div class="highlight">
+	<div class="highlight-heading">
+		<h4>{heading}</h4>
+	</div>
+	<div class="highlight-content">
+		<p>{content}</p>
+	</div>
+</div>
+
+<style>
+	@layer components {
+		.highlight-heading h4 {
+			font-family: var(--font-family-sans);
+			font-size: 0.62rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--accent);
+			display: block;
+			margin-bottom: 8px;
+		}
+		.highlight {
+			background: var(--ink);
+			color: var(--paper);
+			padding: 18px 22px;
+			border-radius: 3px;
+			font-size: 0.88rem;
+			line-height: 1.7;
+			margin-bottom: 0;
+		}
+	}
+</style>
