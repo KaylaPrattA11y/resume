@@ -9,7 +9,7 @@ const { degree, location, year } = Astro.props;
 ---
 
 <article>
-	<h4>{degree}</h4>
+	<h3>{degree}</h3>
 	<div>{location} · {year}</div>
 </article>
 
@@ -20,7 +20,7 @@ const { degree, location, year } = Astro.props;
 			opacity: 0;
 			animation: var(--fadeUp);
 		}
-		h4 {
+		h3 {
 			font-family: var(--font-family-serif);
 			font-size: 1.05rem;
 			font-weight: 700;

@@ -9,7 +9,7 @@ const { heading, content } = Astro.props;
 
 <div class="highlight">
 	<div class="highlight-heading">
-		<h4>{heading}</h4>
+		<h3>{heading}</h3>
 	</div>
 	<div class="highlight-content">
 		<p>{content}</p>
@@ -18,12 +18,12 @@ const { heading, content } = Astro.props;
 
 <style>
 	@layer components {
-		.highlight-heading h4 {
+		.highlight-heading h3 {
 			font-family: var(--font-family-sans);
 			font-size: 0.62rem;
 			letter-spacing: 0.14em;
 			text-transform: uppercase;
-			color: var(--accent);
+			color: var(--accent-dark-theme);
 			display: block;
 			margin-bottom: 8px;
 		}

@@ -12,7 +12,7 @@ const { title, employer, points, dateStart, dateEnd, location } = Astro.props;
 ---
 
 <article>
-	<h4><span>{employer}</span> — {title}</h4>
+	<h3><span>{employer}</span> — {title}</h3>
 	<div>{dateStart} - {dateEnd ? dateEnd : "Present"} · {location}</div>
 	{points && <ul>{points.map((p: string) => <li>{p}</li>)}</ul>}
 </article>
@@ -24,12 +24,12 @@ const { title, employer, points, dateStart, dateEnd, location } = Astro.props;
 			opacity: 0;
 			animation: var(--fadeUp);
 		}
-		h4 {
+		h3 {
 			font-family: var(--font-family-serif);
 			font-size: 1.05rem;
 			font-weight: 700;
 		}
-		h4 span {
+		h3 span {
 			color: var(--accent);
 		}
 		div {
