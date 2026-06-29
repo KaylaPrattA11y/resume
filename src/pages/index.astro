@@ -10,15 +10,14 @@ const skills = [
 	"HTML5 / Semantic Markup",
 	"ARIA",
 	"WCAG 2.1 AA",
-	"Keyboard & Screen Reader",
 	"CSS3 / SCSS / Sass",
 	"Design Tokens",
+	"Core Web Vitals (CWV)",
 	"React",
 	"Redux Toolkit",
 	"RTK Query",
-	"Astro",
+	"AstroJS",
 	"Hugo",
-	"Pug",
 	"TypeScript",
 	"ES6+",
 	"Webpack / Babel",
@@ -35,12 +34,24 @@ const skills = [
 
 <Layout title="Kayla Pratt | React & A11y | Front-End Web Developer">
 	<Section heading="Summary" id="summary">
-		<p>Senior front-end engineer with 10+ years of experience delivering accessible, high-traffic web applications. Deep expertise in WCAG 2.1 AA, semantic HTML, and ARIA, combined with modern front-end stacks (React, Astro, Hugo, TypeScript). Proven track record leading UI architecture, design system integration, and performance optimization for complex, multi-brand platforms.</p>
+		<p>Senior front-end engineer with 10+ years of experience delivering accessible, high-traffic enterprise web applications. Deep expertise in WCAG 2.1 AA, semantic HTML, and ARIA, combined with modern front-end stacks (React, Astro, Hugo, TypeScript). Proven track record leading UI architecture, design system integration, and CWV optimization for complex, multi-brand platforms.</p>
 	</Section>
 	<Section heading="Core Skills" id="core-skills">
 		<Skills skills={skills} />
 	</Section>
 	<Section heading="Employment" id="employment">
+		<Job
+			employer="Lower Notley Hall Farm, LLC."
+			title="Application and Database Engineer"
+			dateStart="02/2026"
+			location="Chaptico, MD (remote)"
+			points={[
+				"Redesign and maintain the venue website using React, TypeScript, SCSS, and AstroJS, ensuring accessibility and performance.",
+				"Migrate from WordPress to AstroJS + TinaCMS for the venue website, ensuring a smooth transition while maintaining content integrity and accessibility.",
+				"Collaborate with product and stakeholders to implement wedding and tour booking database system, ensuring seamless integration with the venue website and efficient management of bookings.",
+				"Implement SEO best practices and monitor web analytics to drive traffic and engagement."
+			]}
+		/>
 		<Job
 			employer="Corpay"
 			title="Senior Front-End Engineer"
@@ -58,7 +69,7 @@ const skills = [
 			title="Front-End Web Developer"
 			dateStart="11/2021"
 			dateEnd="01/2022"
-			location="La Plata, MD"
+			location="La Plata, MD (hybrid)"
 			points={[
 				"Built accessible, content-rich sites using WordPress and modular SCSS with a focus on performance and SEO.",
 				"Implemented semantic, reusable templates and components, enforcing accessibility standards through reviews and tooling."
@@ -69,7 +80,7 @@ const skills = [
 			title="Front-End Web Developer"
 			dateStart="05/2017"
 			dateEnd="11/2021"
-			location="Atlanta, GA"
+			location="Atlanta, GA (hybrid)"
 			points={[
 				"Created a pattern library for the Emory Brand using patternlab.io, Mustache, Gulp, SASS, and Bootstrap.",
 				"Audited and developed the Office of the President website and an Emory Standard Template (Bootstrap 4, Sass, Nunjucks, Node/Gulp) used by multiple clients.",
